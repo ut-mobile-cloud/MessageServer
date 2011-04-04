@@ -1,0 +1,4 @@
+<servlet-mapping>
+ <servlet-name>monitor</servlet-name>
+ <url-pattern>*.css</url-pattern>
+</servlet-mapping>

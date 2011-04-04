@@ -1,0 +1,32 @@
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, pre, code, address, variable, form, fieldset, blockquote {
+ padding: 0;
+ margin: 0;
+ font-size: 100%;
+ font-weight: normal;
+}
+
+body {
+	background : gray;
+}
+
+h1 {
+    font-family: Arial;
+    font-size: 200%;
+    text-align: center;
+}
+
+.status {
+    text-align: center;
+}
+#TaskStatuses {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#TaskStatuses td {
+    font-family: serif;
+    background-color: darkgray;
+    color: black;
+}

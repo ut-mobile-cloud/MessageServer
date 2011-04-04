@@ -1,0 +1,10 @@
+Manually doing stuff:
+Requesting a task:
+/TaskManager?taskClass=CalculateSumTask&taskDescription=
+{
+	"description" : "Will let you select a picture and then upload it to server",
+	"ownerDevice" : "iphone",
+	"deviceID" : "5324075B4C07AFA9E2DBE15B74DBDA2227A74D5537F0D4AF24CC0AECDA697F1C",
+	"taskID" : "fe5ddf07f2acef9e6ecebc1297fe5910",
+	"parameters" : [1,2,3,4,5]
+}
