@@ -5,8 +5,14 @@
 
 package ee.ut.cs.ds.mobilecloud;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import ee.ut.cs.ds.mobilecloud.TaskTimes;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,24 +23,40 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author madis
  */
-@WebServlet(name="RegisterForNotifications", urlPatterns={"/RegisterForNotifications"})
-public class RegisterForNotifications extends HttpServlet {
-   
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+@WebServlet(name="TaskTimesManager", urlPatterns={"/TaskTimesManager"})
+public class TaskTimesManager extends HttpServlet {
+	static TaskTimesDataSource dataSource = TaskTimesDataSourceImpl.getInstance();
+    
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+		String action = request.getParameter("action");
+		String responseString = null;
+		Gson gson = new GsonBuilder().create();
+		if(action.equalsIgnoreCase("UpdateTimes")) {
+			String newTimesJson = request.getParameter("taskTimes");
+			String taskID = request.getParameter("taskID");
+			TaskTimes times = gson.fromJson(newTimesJson, TaskTimes.class);
+			dataSource.updateTimesForTaskID(taskID, times);
+			TaskTimes updatedTimes = dataSource.getTimesForTaskID(taskID);
+			
+			responseString = gson.toJson(updatedTimes);
+		} else if(action.equalsIgnoreCase("getTimes")) {
+			String taskID = request.getParameter("taskID");
+			TaskTimes requestedTimes = dataSource.getTimesForTaskID(taskID);
+			responseString = gson.toJson(requestedTimes);
+		} else if(action.equalsIgnoreCase("getAllTimes")) {
+			String taskID = request.getParameter("taskID");
+			List<TaskTimes> allTimes = dataSource.getAllTimes();
+			responseString = gson.toJson(allTimes);
+		} else if(action.equalsIgnoreCase("clearRecords")) {
+			dataSource.clearRecords();
+			responseString = "Sucessfully cleared all TaskTime records";
+		}
+		
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegisterForNotifications</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RegisterForNotifications at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            */
+            out.println(responseString);
         } finally { 
             out.close();
         }
@@ -75,5 +97,7 @@ public class RegisterForNotifications extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+
 
 }

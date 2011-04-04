@@ -12,5 +12,6 @@ package ee.ut.cs.ds.mobilecloud;
 public interface NotificationProvider {
 	NotificationProvider withDeviceData(String deviceID, String... args);
 	NotificationProvider withMessage(String message);
+        NotificationProvider withKeyValuePairs(String... keyValuePairs);
 	void send();
 }
