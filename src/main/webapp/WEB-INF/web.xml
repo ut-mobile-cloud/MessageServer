@@ -1,4 +1,43 @@
-<servlet-mapping>
- <servlet-name>monitor</servlet-name>
- <url-pattern>*.css</url-pattern>
-</servlet-mapping>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd">
+    <servlet>
+        <servlet-name>monitor</servlet-name>
+        <jsp-file>/monitor.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>monitor</servlet-name>
+        <url-pattern>/monitor</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>StatusMonitor</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.StatusMonitor</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StatusMonitor</servlet-name>
+        <url-pattern>/StatusMonitor</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>TaskManager</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.TaskManager</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TaskManager</servlet-name>
+        <url-pattern>/TaskManager</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>TaskTimesManager</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.TaskTimesManager</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TaskTimesManager</servlet-name>
+        <url-pattern>/TaskTimesManager</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ResultsManager</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.ResultsManager</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResultsManager</servlet-name>
+        <url-pattern>/ResultsManager</url-pattern>
+    </servlet-mapping>
+</web-app>

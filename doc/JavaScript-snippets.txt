@@ -1,0 +1,2 @@
+# Adding a row after the last row in status table in monitor JSP
+$('#TaskStatuses tbody tr:last').after('<tr><td>Third task</td><td>Last one</td> <td class="status">Waiting</td></tr>');

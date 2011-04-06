@@ -15,18 +15,44 @@ h1 {
     text-align: center;
 }
 
-.status {
-    text-align: center;
-}
 #TaskStatuses {
     width: 80%;
+	text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
+.TaskName {
+	text-align: left;
+	width: 20%;
+}
+.TaskDescription {
+	text-align: left;
+	width: 60%;
+}
 
 #TaskStatuses td {
     font-family: serif;
     background-color: darkgray;
     color: black;
+}
+
+#TaskStatuses .StatusNew {
+	background-color: green;
+}
+
+#TaskStatuses .StatusRunning {
+	background-color: yellow;
+}
+
+#TaskStatuses .StatusCompleted {
+	background-color: darkgreen;
+}
+
+#TaskStatuses .StatusUnknown {
+	background-color: red;
+}
+
+#TaskStatuses .StatusError {
+	background-color: red;
 }

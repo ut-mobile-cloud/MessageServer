@@ -8,6 +8,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +24,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "StatusMonitor", urlPatterns = {"/StatusMonitor"})
 public class StatusMonitor extends HttpServlet {
+    enum Status {
+        WAITING,
+        RUNNING,
+        PAUSED,
+        COMPLETED,
+        ERROR
+    }
     int counter = 0;
     
     /** 
@@ -34,15 +45,20 @@ public class StatusMonitor extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            out.println("Kord " + counter++);
+            //out.println("Kord " + counter++);
+            out.write(getFullStatuses());
+			System.out.print(getFullStatuses());
         } finally {            
             out.close();
         }
     }
     String getFullStatuses() {
         Gson gson = new GsonBuilder().create();
+        Map<String, Status> statusMap = new HashMap<String, Status>();
+        statusMap.put("task1", Status.ERROR);
+        statusMap.put("task2", Status.COMPLETED);
         
-        return  "";
+        return  gson.toJson(statusMap);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

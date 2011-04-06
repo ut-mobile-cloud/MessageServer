@@ -1,3 +1,4 @@
 .DS_Store
+target
 /src/main/resources/Certificates.p12
 /src/main/resources/AwsCredentials.properties
