@@ -8,3 +8,10 @@ Requesting a task:
 	"taskID" : "fe5ddf07f2acef9e6ecebc1297fe5910",
 	"parameters" : [1,2,3,4,5]
 }
+
+FORM:
+<form action="/TryingOutStuff">
+<input type="button"/>
+<input type="text" name="nimi"/>
+<input type="file" name="fail"/>
+</form>

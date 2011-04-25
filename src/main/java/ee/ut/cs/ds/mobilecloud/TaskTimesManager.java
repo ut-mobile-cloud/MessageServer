@@ -30,8 +30,12 @@ public class TaskTimesManager extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 		String action = request.getParameter("action");
+		if(action == null) {
+			action = "getAllTimes";
+		}
 		String responseString = null;
 		Gson gson = new GsonBuilder().create();
+		
 		if(action.equalsIgnoreCase("UpdateTimes")) {
 			String newTimesJson = request.getParameter("taskTimes");
 			String taskID = request.getParameter("taskID");

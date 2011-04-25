@@ -21,6 +21,7 @@ public class ResultsManager {
 	}
 	
 	public void addResults(String taskID, String result) {
+		
 		results.put(taskID, result);
 	}
 	
@@ -29,6 +30,9 @@ public class ResultsManager {
 	}
 	
 	public static ResultsManager getInstance() {
+		if (instance == null) {
+			instance = new ResultsManager();
+		}
 		return instance;
 	}
 

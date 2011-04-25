@@ -5,6 +5,7 @@
 package ee.ut.cs.ds.mobilecloud;
 
 import com.google.gson.annotations.Expose;
+import ee.ut.cs.ds.mobilecloud.model.TaskStatus.Status;
 import java.io.File;
 import java.util.List;
 import org.codehaus.jackson.map.type.SimpleType;
@@ -30,10 +31,14 @@ public abstract class AbstractTask implements Runnable {
 
     @Override
     public void run() {
+		TaskStatusDataSourceImpl.getInstance()
+				.getStatus(taskID)
+				.setStatus(Status.RUNNING);
         long startTime = System.currentTimeMillis();
 		performTask();
 		float duration = ((float)(System.currentTimeMillis() - startTime)) / 1000;
 		updateTaskRunningTime(duration);
+		TaskStatusDataSourceImpl.getInstance().getStatus(taskID).setStatus(Status.COMPLETED);
 		storeResult();
         notifyOwner();
     }

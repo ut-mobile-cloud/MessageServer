@@ -46,8 +46,10 @@ public class StatusMonitor extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             //out.println("Kord " + counter++);
-            out.write(getFullStatuses());
-			System.out.print(getFullStatuses());
+            //out.write(getFullStatuses());
+			Gson gson = new GsonBuilder().create();
+			String statusListJson = gson.toJson(TaskStatusDataSourceImpl.getInstance().getAllStatuses());
+			out.write(statusListJson);
         } finally {            
             out.close();
         }

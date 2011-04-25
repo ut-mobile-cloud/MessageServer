@@ -42,20 +42,20 @@ CreateTableRow = function(statusData, rowNr) {
 Monitor.prototype.receiveStatusUpdates = function(remoteData) {
 	currentTableRows = $('#TaskStatuses tbody tr');
 	statusTable = $('#TaskStatuses tbody');
-//	for (var rowIndex = 0; rowIndex < currentTableRows.length; rowIndex++) {
-//		statusTable[rowIndex] = CreateTableRow(remoteData, rowIndex);
-//	}
-	
-	var stubData = [{name:'Abu', description:'Kaabu', status:'RUNNING'},
-	{name:'Kabe', description:'Kaabu', status:'COMPLETED'},
-	{name:'Male', description:'Kaabu', status:'NEW'}];
-	
-	for (var rowIndex = 0; rowIndex < stubData.length; rowIndex++) {
-		console.log('Making row ' + stubData[rowIndex]['name']);
-		var rowHtml = CreateTableRow(stubData[rowIndex], rowIndex);
-		console.log('ROW DATA IS : ' + rowHtml);
-		$('#TaskStatuses').append(rowHtml);
+	for (var rowIndex = 0; rowIndex < currentTableRows.length; rowIndex++) {
+		statusTable[rowIndex] = CreateTableRow(remoteData, rowIndex);
 	}
+	
+//	var stubData = [{name:'Abu', description:'Kaabu', status:'RUNNING'},
+//	{name:'Kabe', description:'Kaabu', status:'COMPLETED'},
+//	{name:'Male', description:'Kaabu', status:'NEW'}];
+//	
+//	for (var rowIndex = 0; rowIndex < stubData.length; rowIndex++) {
+//		console.log('Making row ' + stubData[rowIndex]['name']);
+//		var rowHtml = CreateTableRow(stubData[rowIndex], rowIndex);
+//		console.log('ROW DATA IS : ' + rowHtml);
+//		$('#TaskStatuses').append(rowHtml);
+//	}
 	
 };
 

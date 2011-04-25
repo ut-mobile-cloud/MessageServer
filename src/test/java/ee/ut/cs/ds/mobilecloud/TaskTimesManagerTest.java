@@ -38,7 +38,7 @@ public class TaskTimesManagerTest {
 	@Ignore
     @Test
     public void testUpdateTimesForTask() {
-		MockHttpServletRequest request = new MockHttpServletRequest();
+//		MockHttpServletRequest request = new MockHttpServletRequest();
 //		request.setMethod("POST");
 //		request.addParameter("action", "UpdateTimes");
 //		request.addParameter("taskID", SAMPLE_MD5_TASK_ID);

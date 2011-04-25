@@ -4,6 +4,10 @@
         <servlet-name>monitor</servlet-name>
         <jsp-file>/monitor.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>TryingOutStuff</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.TryingOutStuff</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>monitor</servlet-name>
         <url-pattern>/monitor</url-pattern>
@@ -33,11 +37,15 @@
         <url-pattern>/TaskTimesManager</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ResultsManager</servlet-name>
-        <servlet-class>ee.ut.cs.ds.mobilecloud.ResultsManager</servlet-class>
+        <servlet-name>RequestResults</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.RequestResults</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ResultsManager</servlet-name>
-        <url-pattern>/ResultsManager</url-pattern>
+        <servlet-name>RequestResults</servlet-name>
+        <url-pattern>/RequestResults</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TryingOutStuff</servlet-name>
+        <url-pattern>/TryingOutStuff</url-pattern>
     </servlet-mapping>
 </web-app>

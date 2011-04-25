@@ -64,7 +64,7 @@ class IPhoneNotificationProvider implements NotificationProvider {
                     .badge(1)
                     .customFields(customFields)
                     .build();
-			
+			System.out.println("IPHONE NOTIFICATION PROVIDER : SENDING MESSAGE");
             service.push(token, payload);
         } catch (Exception ex) {
             System.out.println("ERROR: " + ex.getMessage());

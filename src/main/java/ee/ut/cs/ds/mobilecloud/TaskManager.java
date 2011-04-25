@@ -77,8 +77,13 @@ public class TaskManager extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-		AbstractTask requestedTask = processMultipartTaskRequest(request);
+        AbstractTask requestedTask = null;
+		if (ServletFileUpload.isMultipartContent(request)) {
+			requestedTask = processMultipartTaskRequest(request);
+		} else {
+			System.out.println("I got non-multipart request");
+		}
+		TaskStatusDataSourceImpl.getInstance().getStatus(requestedTask.getTaskID());
         Thread taskThread = new Thread(requestedTask);
         taskThread.start();
 
@@ -92,6 +97,7 @@ public class TaskManager extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet TaskManager at " + request.getContextPath() + "</h1>");
+			out.println("Request was : " + request.getQueryString());
 //			out.println("file name : " + imageFileName + "file size : " + imageFileSize);
             out.println("</body>");
             out.println("</html>");

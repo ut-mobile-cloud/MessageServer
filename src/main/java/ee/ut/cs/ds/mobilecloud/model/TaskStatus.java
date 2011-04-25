@@ -17,6 +17,7 @@ public class TaskStatus {
         WAITING,
         RUNNING,
         COMPLETED,
+		UNKNOWN,
         ERROR
     }
     String taskID;
@@ -28,7 +29,16 @@ public class TaskStatus {
         this.description = description;
         this.status = status;
     }
+	public TaskStatus(String taskID) {
+		this.description = "No description";
+		this.taskID = taskID;
+		this.status = Status.UNKNOWN;
+	}
     
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
     String toJson() {
         Gson gson = new GsonBuilder().create();
         return gson.toJson(this);
