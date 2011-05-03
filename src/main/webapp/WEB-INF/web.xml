@@ -8,6 +8,22 @@
         <servlet-name>TryingOutStuff</servlet-name>
         <servlet-class>ee.ut.cs.ds.mobilecloud.TryingOutStuff</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SynchronousTestsServlet</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.SynchronousTestsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TimeSyncServlet</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.TimeSyncServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SyncTestsServlet</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.performance.SyncTestsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AsyncTestsServlet</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.performance.AsyncTestsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>monitor</servlet-name>
         <url-pattern>/monitor</url-pattern>
@@ -47,5 +63,21 @@
     <servlet-mapping>
         <servlet-name>TryingOutStuff</servlet-name>
         <url-pattern>/TryingOutStuff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SynchronousTestsServlet</servlet-name>
+        <url-pattern>/SynchronousTestsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TimeSyncServlet</servlet-name>
+        <url-pattern>/TimeSyncServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SyncTestsServlet</servlet-name>
+        <url-pattern>/SyncTestsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AsyncTestsServlet</servlet-name>
+        <url-pattern>/AsyncTestsServlet</url-pattern>
     </servlet-mapping>
 </web-app>

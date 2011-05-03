@@ -36,8 +36,7 @@ public class TaskManager extends HttpServlet {
 
     static String CLASS_QUALIFIER = "ee.ut.cs.ds.mobilecloud.";
     static final String TEMP_FOLDER_FOR_IMAGES = "/tmp/uploads";
-	// TODO: there seems to be a bug when no data field is present (ie making a 
-	// request from browser, the servlet just crashes (on line 70
+    
     AbstractTask processMultipartTaskRequest(HttpServletRequest request) {
         FileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
@@ -77,6 +76,7 @@ public class TaskManager extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         AbstractTask requestedTask = null;
 		if (ServletFileUpload.isMultipartContent(request)) {
 			requestedTask = processMultipartTaskRequest(request);
@@ -104,6 +104,7 @@ public class TaskManager extends HttpServlet {
         } finally {
             out.close();
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
