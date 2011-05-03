@@ -12,13 +12,13 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author madis
  */
 class SyncTestTimesManager {
-    
+    private static SyncTestTimesManager instance = null;
     private Map<String, SyncTestTimes> timesMap;
+    
     private SyncTestTimesManager() {
         timesMap = new ConcurrentHashMap<String, SyncTestTimes>();
     }
     public static SyncTestTimesManager sharedManager() {
-        SyncTestTimesManager instance = null;
         if (instance == null) {
             instance = new SyncTestTimesManager();
         }
@@ -34,5 +34,19 @@ class SyncTestTimesManager {
         }
         
         return times;
+    }
+    
+    public SyncTestTimes addTimes(SyncTestTimes times) {
+        SyncTestTimes presentTimes = timesMap.get(times.getTestID());
+        if (presentTimes == null) {
+            timesMap.put(times.getTestID(), times);
+        } else {
+            presentTimes.updateWith(times);
+        }
+        return timesMap.get(times.getTestID());
+    }
+
+    Iterable<SyncTestTimes> getAllTimes() {
+        return timesMap.values();
     }
 }

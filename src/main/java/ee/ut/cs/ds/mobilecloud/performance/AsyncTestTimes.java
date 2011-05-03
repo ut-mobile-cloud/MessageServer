@@ -25,6 +25,9 @@ public class AsyncTestTimes {
         this.testID = testID;
     }
 
+    public void updateWith(AsyncTestTimes times) {
+        
+    }
     /**
      * @return the testID
      */

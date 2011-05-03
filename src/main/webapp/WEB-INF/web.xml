@@ -24,6 +24,10 @@
         <servlet-name>AsyncTestsServlet</servlet-name>
         <servlet-class>ee.ut.cs.ds.mobilecloud.performance.AsyncTestsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RequestTestTimesServlet</servlet-name>
+        <servlet-class>ee.ut.cs.ds.mobilecloud.performance.RequestTestTimesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>monitor</servlet-name>
         <url-pattern>/monitor</url-pattern>
@@ -79,5 +83,9 @@
     <servlet-mapping>
         <servlet-name>AsyncTestsServlet</servlet-name>
         <url-pattern>/AsyncTestsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RequestTestTimesServlet</servlet-name>
+        <url-pattern>/RequestTestTimesServlet</url-pattern>
     </servlet-mapping>
 </web-app>
