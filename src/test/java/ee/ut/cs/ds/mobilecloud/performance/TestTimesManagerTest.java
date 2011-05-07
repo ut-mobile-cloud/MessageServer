@@ -75,7 +75,7 @@ public class TestTimesManagerTest {
 		addPredeterminedAsyncTimes();
 		AsyncTestTimes timesA = (AsyncTestTimes)manager.getTimesForTestID("A1");
 		assertThat(timesA.getTestID(), is(equalTo("A1")));
-		assertThat(timesA, instanceOf(AsyncTestTimes.class));
+		assertThat(timesA, is(instanceOf(AsyncTestTimes.class)));
 	}
 
 }
