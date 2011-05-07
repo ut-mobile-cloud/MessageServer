@@ -35,21 +35,36 @@ public class RequestTestTimesServlet extends HttpServlet {
         
         Gson gson = new GsonBuilder().create();
         if (testType.equals("SyncTests")) {
-            
+            System.out.println("Getting sync test times from client");
             SyncTestTimes clientTimes = gson.fromJson(timesJson, SyncTestTimes.class);
             SyncTestTimes serverTimes = SyncTestTimesManager.sharedManager().getTimesForTestID(testID);
             serverTimes.updateWith(clientTimes);
             responseJson = gson.toJson(serverTimes);
             
         } else if (testType.equals("AsyncTests")) {
-            AsyncTestTimes times = gson.fromJson(timesJson, AsyncTestTimes.class);
-            // TODO: same as befora only for Asynchronous tests
+            //AsyncTestTimes times = gson.fromJson(timesJson, AsyncTestTimes.class);
+            AsyncTestTimes clientTimes = gson.fromJson(timesJson, AsyncTestTimes.class);
+			AsyncTestTimes serverTimes = (AsyncTestTimes)TestTimesManager.sharedManager().getTimesForTestID(clientTimes.getTestID());
+			serverTimes.updateWith(clientTimes);
+			responseJson = gson.toJson(serverTimes);
         } else {
             StringBuilder builder = new StringBuilder();
-            for (SyncTestTimes t : SyncTestTimesManager.sharedManager().getAllTimes()) {
-                builder.append(gson.toJson(t));
-                System.out.println("Added time to response : " + gson.toJson(t));
-            }
+//            for (SyncTestTimes t : SyncTestTimesManager.sharedManager().getAllTimes()) {
+//                builder.append(gson.toJson(t));
+//                System.out.println("Added time to response : " + gson.toJson(t));
+//            }
+			for (Object time : TestTimesManager.sharedManager().getAllTimes()) {
+				builder.append(gson.toJson(time));
+				builder.append("\n<BR>");
+//				if (time instanceof SyncTestTimes) {
+//					builder.append(((SyncTestTimes)time).toString());
+//				} else if (time instanceof AsyncTestTimes) {
+//					builder.append(((AsyncTestTimes)time).toString());
+//				} else {
+//					builder.append("Times was neither Async nor Sync");
+//				}
+				
+			}
             responseJson = builder.toString();
         }
         response.setContentType("text/html;charset=UTF-8");

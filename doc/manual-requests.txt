@@ -15,3 +15,5 @@ FORM:
 <input type="text" name="nimi"/>
 <input type="file" name="fail"/>
 </form>
+
+RequestTestTimesServlet?testID=c3e55dea71ed30aee4bb6e0bd2f0441c

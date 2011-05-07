@@ -15,7 +15,11 @@ import org.junit.runners.Suite;
  * @author madis
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ee.ut.cs.ds.mobilecloud.TestTaskTimes.class,ee.ut.cs.ds.mobilecloud.TaskTimesDataSourceImplTest.class,ee.ut.cs.ds.mobilecloud.TaskTimesManagerTest.class})
+@Suite.SuiteClasses({ee.ut.cs.ds.mobilecloud.TestTaskTimes.class,
+	ee.ut.cs.ds.mobilecloud.TaskTimesDataSourceImplTest.class,
+	ee.ut.cs.ds.mobilecloud.TaskTimesManagerTest.class,
+	ee.ut.cs.ds.mobilecloud.performance.TestTimesManagerTest.class
+})
 public class AllTests {
 
     @BeforeClass

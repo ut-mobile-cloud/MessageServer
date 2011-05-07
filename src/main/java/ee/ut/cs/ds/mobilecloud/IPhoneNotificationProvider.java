@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * @author madis
  */
-class IPhoneNotificationProvider implements NotificationProvider {
+public class IPhoneNotificationProvider implements NotificationProvider {
 
     String token;
     String message;

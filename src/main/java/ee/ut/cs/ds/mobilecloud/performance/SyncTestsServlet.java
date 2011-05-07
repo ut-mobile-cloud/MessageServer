@@ -55,7 +55,7 @@ public class SyncTestsServlet extends HttpServlet {
 			s3 = new AmazonS3Client(new PropertiesCredentials(
 					this.getClass().getClassLoader().getResourceAsStream("AwsCredentials.properties")));
 		} catch (IOException ex) {
-			Logger.getLogger(UploadPictureTask.class.getName()).log(Level.SEVERE, null, ex);
+			//Logger.getLogger(UploadPictureTask.class.getName()).log(Level.SEVERE, null, ex);
 		}
         s3.createBucket(DefaultS3BucketName);
 		for (File file : files) {

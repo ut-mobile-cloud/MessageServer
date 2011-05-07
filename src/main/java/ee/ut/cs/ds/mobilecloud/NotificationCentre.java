@@ -9,9 +9,9 @@ package ee.ut.cs.ds.mobilecloud;
  *
  * @author madis
  */
-class NotificationCentre {
+public class NotificationCentre {
 
-	static NotificationProvider getProviderForDevice(String device) {
+	public static NotificationProvider getProviderForDevice(String device) {
 		if (device.equals("iphone")) {
 			return new IPhoneNotificationProvider();
 		} else if (device.equalsIgnoreCase("android")) {

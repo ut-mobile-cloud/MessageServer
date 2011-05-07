@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author madis
  */
-class AndroidNotificationProvider implements NotificationProvider {
+public class AndroidNotificationProvider implements NotificationProvider {
 
     String token;
     String message;

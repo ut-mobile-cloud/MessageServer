@@ -23,10 +23,33 @@ public class AsyncTestTimes {
     
     public AsyncTestTimes(String testID) {
         this.testID = testID;
+		initialize();
     }
+	
+	AsyncTestTimes() {
+		initialize();
+	}
 
-    public void updateWith(AsyncTestTimes times) {
-        
+    private void initialize() {
+		clientInitialRequest = -1;
+		serverReceiveInitialRequest = -1;
+		serverSendImmediateResponse = -1;
+		clientReceiveImmediateResponse = -1;
+		serverRequestToCloud = -1;
+		serverResponseFromCloud = -1;
+		serverSendPushNotification = -1;
+		clientReceivePushNotification = -1;
+	}
+	public void updateWith(AsyncTestTimes times) {
+        if (times.getClientInitialRequest() >= 0) {
+			clientInitialRequest = times.clientInitialRequest;
+		}
+		if (times.clientReceiveImmediateResponse >= 0) {
+			clientReceiveImmediateResponse = times.clientReceiveImmediateResponse;
+		}
+		if (times.clientReceivePushNotification >= 0) {
+			clientReceivePushNotification = times.clientReceivePushNotification;
+		}
     }
     /**
      * @return the testID
@@ -132,6 +155,13 @@ public class AsyncTestTimes {
     public double getClientReceivePushNotification() {
         return clientReceivePushNotification;
     }
+
+	/**
+	 * @param testID the testID to set
+	 */
+	public void setTestID(String testID) {
+		this.testID = testID;
+	}
     
     
 }
