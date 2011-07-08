@@ -1,0 +1,5 @@
+Prototype implementation of Mobile Cloud Middleware (MCM). It provides web services for it's users (mobile devices) through web services (provided by through servlet api). Project uses Maven so it should be fairly easy to build and try it out.
+
+Project also includes code for testing the performance. Performance in sense of measuring the times that different operations take. For that purpose, synchronization mechanism was also developed.
+
+[More coming]

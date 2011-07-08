@@ -9,6 +9,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author madis
  */
+@WebServlet(name = "RequestTestTimesServlet", urlPatterns = {"/cloudimageprocessing-server/RequestTestTimesServlet"})
 public class RequestTestTimesServlet extends HttpServlet {
 
     /** 
@@ -34,14 +36,14 @@ public class RequestTestTimesServlet extends HttpServlet {
         String responseJson = null;
         
         Gson gson = new GsonBuilder().create();
-        if (testType.equals("SyncTests")) {
+        if (testType != null && testType.equals("SyncTests")) {
             System.out.println("Getting sync test times from client");
             SyncTestTimes clientTimes = gson.fromJson(timesJson, SyncTestTimes.class);
             SyncTestTimes serverTimes = SyncTestTimesManager.sharedManager().getTimesForTestID(testID);
             serverTimes.updateWith(clientTimes);
             responseJson = gson.toJson(serverTimes);
             
-        } else if (testType.equals("AsyncTests")) {
+        } else if (testType != null && testType.equals("AsyncTests")) {
             //AsyncTestTimes times = gson.fromJson(timesJson, AsyncTestTimes.class);
             AsyncTestTimes clientTimes = gson.fromJson(timesJson, AsyncTestTimes.class);
 			AsyncTestTimes serverTimes = (AsyncTestTimes)TestTimesManager.sharedManager().getTimesForTestID(clientTimes.getTestID());
